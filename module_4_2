@@ -1,0 +1,8 @@
+def test_function():
+    
+    def inner_function(pr):
+        print(pr)
+
+    inner_function(pr='Я в области видимости внутри функции test_function')
+
+test_function()
