@@ -1,8 +1,16 @@
 def test_function():
-    
-    def inner_function(pr):
-        print(pr)
 
-    inner_function(pr='Я в области видимости внутри функции test_function')
+    def inner_function():
+        print('Я в области видимости внутри функции test_function')
 
-test_function()
+    inner_function()
+
+inner_function() # Выдает ошибку, нельзя вызвать функцию из объемлющей области видимости в глобальной: Traceback (most recent call last):
+  File "C:\Users\HP\PycharmProjects\pythonProject1\my_lessons\module_4_2.py", line 8, in <module>
+    inner_function()
+    ^^^^^^^^^^^^^^
+NameError: name 'inner_function' is not defined. Did you mean: 'test_function'?
+
+test_function() # Если вызвать основную функцию и удалить из глобальной области видимости функцию inner_function(), тогда все работает.
+Результат:
+Я в области видимости внутри функции test_function
