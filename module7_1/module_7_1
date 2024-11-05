@@ -1,47 +1,45 @@
 from pprint import pprint
-from tkinter.font import names
 
 class Product:
-
-
     def __init__(self, name, weight, category):
         self.name = str(name)
         self.weight = float(weight)
         self.category = str(category)
 
-
     def __str__(self):
         return f'{self.name}, {self.weight}, {self.category}'
 
 class Shop:
-    __file_name = 'products.txt'
+    def __init__(self, file_name='products.txt'):
+        self.__file_name = file_name
 
     def get_products(self):
-        products_file = open(self.__file_name, 'r')
-        products_string = products_file.read()
-        products_file.close()
-        return products_string
-
+        with open(self.__file_name, 'r') as products_file:
+            return products_file.read()
 
     def add(self, *products):
-        food_ = self.get_products()
-        for food in products:
-            if food.name not in range(len(food_)):
-                open_file = open(self.__file_name, 'a')
-                open_file.write(f'{food}\n')
-                open_file.close()
+        existing_products = self.get_products().splitlines()
+        new_entries = []
 
-            if list(filter(lambda x: (food.name in food_), food_.split())):
-                print(f'Продукт {food.name}, {food.weight}, {food.category} уже есть в магазине')
+        for product in products:
+            product_str = str(product)
+            if product_str not in existing_products:
+                new_entries.append(product_str)
+            else:
+                print(f'Продукт {product.name}, {product.weight}, {product.category} уже есть в магазине')
 
+        if new_entries:
+            with open(self.__file_name, 'a') as products_file:
+                products_file.write('\n'.join(new_entries) + '\n')
 
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
 p2 = Product('Spaghetti', 3.4, 'Groceries')
 p3 = Product('Potato', 5.5, 'Vegetables')
 
-print(p2) # __str__
+print(p2)
 
 s1.add(p1, p2, p3)
 
 print(s1.get_products())
+
