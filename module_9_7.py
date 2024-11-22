@@ -1,7 +1,6 @@
 
 def is_prime(func):
     def printer(*args):
-        prime = True
         counter = 0
         result = func(*args)
         for i in range(2, result // 2+1):
