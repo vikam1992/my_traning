@@ -3,13 +3,13 @@ def is_prime(func):
     def printer(*args):
         counter = 0
         result = func(*args)
-        for i in range(2, result // 2+1):
+        for i in range(2, int(result**0.5) + 1):
             if result % i == 0:
                 counter += 1
         if counter <= 0:
             print('Простое')
         else:
-            print('Число не является простым')
+            print('Составное')
         return result
     return printer
 
