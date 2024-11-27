@@ -13,7 +13,7 @@ class Knight(threading.Thread):
             sum_enemy -= self.power
             time.sleep(1)
             counter_days += 1
-            print(f'{self.name} сражается {counter_days} дней, осталось {sum_enemy} воинов')
+            print(f'{self.name} сражается {counter_days} день(дня/дней), осталось {sum_enemy} воинов')
         print(f'{self.name} одержал победу спустя {counter_days} дней(дня)!')
 
 
