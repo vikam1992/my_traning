@@ -1,8 +1,8 @@
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram.dispatcher.filters.state import State, StatesGroup # для работы состояний
-from aiogram.dispatcher import FSMContext # тоже необходим для работы с состояниями
-from fontTools.merge.util import first
+from aiogram.dispatcher.filters.state import State, StatesGroup 
+from aiogram.dispatcher import FSMContext 
+
 
 
 api = ''
