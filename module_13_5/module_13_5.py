@@ -18,8 +18,8 @@ class UserState(StatesGroup):
 kb = ReplyKeyboardMarkup(resize_keyboard=True)
 button1 = KeyboardButton(text= 'Рассчитать')
 button2 = KeyboardButton(text= 'Информация')
-kb.add(button1)
-kb.add(button2)
+kb.row(button1, button2)
+
 
 @dp.message_handler(text = 'Рассчитать')
 async def set_age(message):
@@ -58,6 +58,8 @@ async def start(message):
 @dp.message_handler()
 async def all_messages(message):
     await message.answer("Введите команду /start, чтобы начать расчет")
+
+
 
 
 
